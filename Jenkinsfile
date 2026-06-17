@@ -1,19 +1,7 @@
 pipeline {
     agent any
 
-    tools {
-        gradle 'Gradle'
-    }
-
     stages {
-
-        stage('Check') {
-            steps {
-                sh 'which gradle'
-                sh 'gradle --version'
-                sh 'java -version'
-            }
-        }
 
         stage('Checkout') {
             steps {
@@ -21,17 +9,23 @@ pipeline {
             }
         }
 
+        stage('Check') {
+            steps {
+                sh 'java -version'
+                sh 'chmod +x gradlew'
+                sh './gradlew --version'
+            }
+        }
+
         stage('Build') {
             steps {
-                
-                sh '/opt/gradle/gradle-8.5.0/bin/gradle --version'
-                sh '/opt/gradle/gradle-8.5.0/bin/gradle build'
+                sh './gradlew clean build'
             }
         }
 
         stage('Run') {
             steps {
-                sh 'gradle run'
+                sh './gradlew run'
             }
         }
     }
