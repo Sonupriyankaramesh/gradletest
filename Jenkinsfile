@@ -4,16 +4,17 @@ pipeline {
     tools {
         gradle 'Gradle'
     }
-    stage('Check') {
-        steps {
-            sh 'which gradle'
-            sh 'gradle --version'
-            sh 'java -version'
-        }
-    }
-
 
     stages {
+
+        stage('Check') {
+            steps {
+                sh 'which gradle'
+                sh 'gradle --version'
+                sh 'java -version'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git 'https://github.com/Sonupriyankaramesh/gradletest.git'
