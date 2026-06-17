@@ -23,7 +23,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gradle build'
+                
+                sh '/opt/gradle/gradle-8.5.0/bin/gradle --version'
+                sh '/opt/gradle/gradle-8.5.0/bin/gradle build'
             }
         }
 
