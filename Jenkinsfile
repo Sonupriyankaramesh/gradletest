@@ -4,6 +4,14 @@ pipeline {
     tools {
         gradle 'Gradle'
     }
+    stage('Check') {
+        steps {
+            sh 'which gradle'
+            sh 'gradle --version'
+            sh 'java -version'
+        }
+    }
+
 
     stages {
         stage('Checkout') {
